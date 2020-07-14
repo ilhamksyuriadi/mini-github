@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  value = ''
+  public value : String = '';
+  public is_loading : boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    if (this.value) {
+      this.is_loading = true;
+      console.log(this.value);
+    } else {
+      alert("The field can't be empty");
+    }
   }
 
 }
