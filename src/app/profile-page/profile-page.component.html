@@ -1,1 +1,30 @@
-<p>profile-page works!</p>
+<div class="layout">
+    <div class="content">
+        <div class="profile-card">
+            <img *ngIf="img_url" src="{{img_url}}" alt="">
+            <h1>{{ username }}</h1>
+            <div class="button-wrapper">
+                <button mat-raised-button (click)="back()">
+                    <span class="material-icons">home</span>
+                    Back
+                </button>
+                <button mat-raised-button color="primary">Repository</button>
+            </div>
+        </div>
+        <div *ngIf="formatted_data" class="info-card">
+            <div class="info">
+                <h1>Information</h1>
+                <div class="info-data">
+                    <div *ngFor="let data of formatted_data">
+                        <mat-card>
+                            <span class="key">{{ data.key }}:  </span> 
+                            <span *ngIf="data.value" class="value">{{ data.value }}</span>
+                            <span *ngIf="!data.value" class="no-value">not available</span> 
+                        </mat-card>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

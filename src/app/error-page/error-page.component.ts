@@ -15,7 +15,6 @@ export class ErrorPageComponent implements OnInit {
 
   back () {
     this.router.navigateByUrl('/')
-    console.log('back clicked')
   }
 
 }

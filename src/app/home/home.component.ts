@@ -22,9 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   submit () {
-
     if (this.value) {
-
       this.is_loading = true;
       this.getUser(this.value).subscribe( res => {
         if (res) {
@@ -38,20 +36,14 @@ export class HomeComponent implements OnInit {
         this.is_loading = false;
         this.router.navigateByUrl('/error-page')
       })
-
     } else {
-
-      alert("The username field can't be empty");
-
+        alert("The username field can't be empty");
     }
-
   }
 
   getUser (username) {
-
     let url = api_url.user + username;
     return this.http.get(url)
-
   }
 
 }
