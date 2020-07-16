@@ -42,8 +42,9 @@ export class HomeComponent implements OnInit {
   }
 
   getUser (username) {
-    let url = api_url.user + username;
-    return this.http.get(url)
+    let url = api_url.user;
+    url = url.replace('[user]', username);
+    return this.http.get(url);
   }
 
 }

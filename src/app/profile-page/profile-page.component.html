@@ -6,9 +6,12 @@
             <div class="button-wrapper">
                 <button mat-raised-button (click)="back()">
                     <span class="material-icons">home</span>
-                    Back
+                    Home
                 </button>
-                <button mat-raised-button color="primary" (click)="toRepoPage()">Repository</button>
+                <button mat-raised-button color="primary" (click)="toRepoPage()">
+                    <span class="material-icons">storage</span>
+                    Repository
+                </button>
             </div>
         </div>
         <div *ngIf="formatted_data" class="info-card">
