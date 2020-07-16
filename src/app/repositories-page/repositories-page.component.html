@@ -13,6 +13,11 @@
         <div class="col-sm-3"></div>
     </div>
     <div *ngIf="repos" class="row">
+        <mat-paginator 
+            [length]="repos.length"
+            [pageSize]="5"
+            (page)="pageEvent = getRepoData($event)">
+        </mat-paginator>
         <div *ngFor="let repo of repos" class="repo-wrapper">
             <mat-accordion>
                 <mat-expansion-panel>

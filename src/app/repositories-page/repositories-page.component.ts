@@ -13,6 +13,7 @@ export class RepositoriesPageComponent implements OnInit {
   public username: String = '';
   public is_loading: boolean = true;
   public repos: any;
+  public current_repos: any;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
@@ -68,6 +69,10 @@ export class RepositoriesPageComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(copy_url);
     alert('Clone url copied: ' + url)
+  }
+
+  getRepoData(event) {
+    console.log(event)
   }
 
 }
