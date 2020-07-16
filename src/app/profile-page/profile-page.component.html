@@ -8,7 +8,7 @@
                     <span class="material-icons">home</span>
                     Back
                 </button>
-                <button mat-raised-button color="primary">Repository</button>
+                <button mat-raised-button color="primary" (click)="toRepoPage()">Repository</button>
             </div>
         </div>
         <div *ngIf="formatted_data" class="info-card">
@@ -16,12 +16,12 @@
                 <h1>Information</h1>
                 <div class="info-data">
                     <div *ngFor="let data of formatted_data">
+                        <br>
                         <mat-card>
                             <span class="key">{{ data.key }}:  </span> 
                             <span *ngIf="data.value" class="value">{{ data.value }}</span>
-                            <span *ngIf="!data.value" class="no-value">not available</span> 
+                            <span *ngIf="!data.value" class="no-value">data not available</span> 
                         </mat-card>
-                        <br>
                     </div>
                 </div>
             </div>

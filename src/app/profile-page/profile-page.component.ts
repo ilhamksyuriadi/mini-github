@@ -38,6 +38,10 @@ export class ProfilePageComponent implements OnInit {
     this.router.navigateByUrl('/')
   }
 
+  toRepoPage () {
+    this.router.navigateByUrl('/repositories-page/' + this.username);
+  }
+
   getUser (username) {
     let url = api_url.user + username;
     return this.http.get(url)

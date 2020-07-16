@@ -12,17 +12,21 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
+// import { MatTableDataSource } from '@angular/material/table';
+// import { MatPaginator } from '@angular/material/paginator';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { RepositoriesPageComponent } from './repositories-page/repositories-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    RepositoriesPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     FormsModule,
     MatIconModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    // MatTableDataSource
+    // MatPaginator
   ],
   providers: [],
   bootstrap: [AppComponent]
