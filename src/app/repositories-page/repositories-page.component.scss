@@ -34,7 +34,6 @@
                 }
             }
             .repo-body {
-                border: 1px solid rgb(209, 209, 209);
                 margin: 0;
                 .left {
                     padding-left: 30px;
@@ -46,6 +45,10 @@
                     }
                 }
                 .right {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    flex-direction: column;
                 }
             }
         }

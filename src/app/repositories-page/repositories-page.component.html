@@ -39,14 +39,14 @@
                     </mat-expansion-panel-header>
                     <div class="repo-body">
                         <div class="row">
-                            <div class="col-9 left">
+                            <div class="col-7 left">
                                 <p><span class="desc-title">Project Language:</span> {{ repo.language }} </p>
                                 <p><span class="desc-title">Project Size:</span> {{ repo.size }}</p>
                                 <p><span class="desc-title">Forking Url:</span> {{ repo.forks_url }}</p>
                                 <p *ngIf="repo.description"><span class="desc-title">Description:</span> {{ repo.description }}</p>
                                 <p *ngIf="!repo.description"><span class="desc-title">Description:</span> <span class="no-desc"> not available for this project</span></p>
                             </div>
-                            <div class="col-3 right">
+                            <div class="col-5 right">
                                 <button mat-raised-button [matMenuTriggerFor]="menu">Clone or Download</button>
                                 <mat-menu #menu="matMenu">
                                     <button mat-menu-item (click)="clone(repo.clone_url)">Clone</button>
