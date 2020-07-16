@@ -11,6 +11,27 @@
         }
         .repo-wrapper {
             width: 100%;
+            .repo-header {
+                width: 100%;
+                display: flex;
+                padding-right: 20px;
+                align-items: center;
+                p {
+                    margin: 0;
+                }
+                .repo-logo-wrapper {
+                    display: flex;
+                    width: 170px;
+                    justify-content: space-between;
+                    color: rgb(129, 129, 129);
+                    .repo-logo {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 38px;
+                    }
+                }
+            }
         }
     }
 }

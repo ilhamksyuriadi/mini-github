@@ -17,14 +17,28 @@
             <mat-accordion>
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
-                        <mat-panel-title>
-                        Personal data
-                        </mat-panel-title>
-                        <mat-panel-description>
-                        Type your name and age
-                        </mat-panel-description>
+                        <div class="repo-header">
+                            <mat-panel-title>
+                                {{ repo.owner.login }} / {{ repo.name }}
+                            </mat-panel-title>
+                            <div class="repo-logo-wrapper">
+                                <div class="repo-logo">
+                                    <span class="material-icons">star_rate</span>
+                                    <p>{{ repo.stargazers_count }}</p>
+                                </div>
+                                <div class="repo-logo">
+                                    <span class="material-icons">remove_red_eye</span>
+                                    <p>{{ repo.watchers_count }}</p>
+                                </div>
+                                <div class="repo-logo">
+                                    <span class="material-icons">call_split</span>
+                                    <p>{{ repo.forks_count }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
+                <br>
             </mat-accordion>
         </div>
     </div>
