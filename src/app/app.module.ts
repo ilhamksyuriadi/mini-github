@@ -11,12 +11,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'
-import { MatCardModule } from '@angular/material/card';
-// import { MatTableDataSource } from '@angular/material/table';
-// import { MatPaginator } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';;
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
+
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RepositoriesPageComponent } from './repositories-page/repositories-page.component';
@@ -42,9 +41,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatIconModule,
     HttpClientModule,
     MatCardModule,
-    // MatTableDataSource
-    // MatPaginator
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

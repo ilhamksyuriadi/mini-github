@@ -10,16 +10,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RepositoriesPageComponent implements OnInit {
 
-  public username : String = '';
-  public is_loading : boolean = true;
+  public username: String = '';
+  public is_loading: boolean = true;
+  public repos: any;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.username = this.activatedRoute.snapshot.params['username'];
     this.getRepos(this.username).subscribe( res => {
-      console.log(res)
-      setTimeout(() => this.setLoading(false),800)
+      if (res) {
+        console.log(res)
+        this.repos = res
+        setTimeout(() => this.setLoading(false),800)
+      }
     })
   }
 
