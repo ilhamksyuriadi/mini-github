@@ -19,6 +19,7 @@ export class ProfilePageComponent implements OnInit {
   public user_datas : any;
   public user_data_keys : any;
   public formatted_data : any;
+  public is_loading : boolean = true;
 
   constructor( private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient ) { }
 
@@ -30,6 +31,7 @@ export class ProfilePageComponent implements OnInit {
         this.user_datas = res;
         this.user_data_keys = Object.keys(this.user_datas);
         this.formatted_data = this.formatData(this.user_data_keys,this.user_datas);
+        setTimeout(() => this.setLoading(false),800)
       }
     })
   }
@@ -59,6 +61,10 @@ export class ProfilePageComponent implements OnInit {
     })
 
     return formatted_data
+  }
+
+  setLoading(state){
+    this.is_loading = state;
   }
 
 }

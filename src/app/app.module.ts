@@ -14,11 +14,13 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
 // import { MatTableDataSource } from '@angular/material/table';
 // import { MatPaginator } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RepositoriesPageComponent } from './repositories-page/repositories-page.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { RepositoriesPageComponent } from './repositories-page/repositories-page
     HomeComponent,
     ErrorPageComponent,
     ProfilePageComponent,
-    RepositoriesPageComponent
+    RepositoriesPageComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { RepositoriesPageComponent } from './repositories-page/repositories-page
     MatCardModule,
     // MatTableDataSource
     // MatPaginator
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
