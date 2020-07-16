@@ -37,8 +37,37 @@ export class RepositoriesPageComponent implements OnInit {
     return this.http.get(url);
   }
 
-  setLoading(state){
+  setLoading(state) {
     this.is_loading = state;
+  }
+
+  getDownLoadUrl(url) {
+    url = url.replace('{archive_format}', 'zipball')
+    url = url.replace('{/ref}', '/master')
+    console.log('ini url', url)
+    return this.http.get(url,{responseType: 'blob'})
+  }
+
+  download(url){
+    this.getDownLoadUrl(url).subscribe( res => {
+      console.log('ini ress download', URL.createObjectURL(res))
+      window.open(URL.createObjectURL(res), "_blank");
+    })
+  }
+
+  clone(url) {
+    const copy_url = document.createElement('textarea');
+    copy_url.style.position = 'fixed';
+    copy_url.style.left = '0';
+    copy_url.style.top = '0';
+    copy_url.style.opacity = '0';
+    copy_url.value = url;
+    document.body.appendChild(copy_url);
+    copy_url.focus();
+    copy_url.select();
+    document.execCommand('copy');
+    document.body.removeChild(copy_url);
+    alert('Clone url copied: ' + url)
   }
 
 }

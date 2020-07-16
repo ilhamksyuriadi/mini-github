@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';;
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
@@ -42,7 +43,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     HttpClientModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
