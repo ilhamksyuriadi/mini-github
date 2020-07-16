@@ -32,6 +32,16 @@
                     }
                 }
             }
+            .repo-body {
+                border: 1px solid rgb(209, 209, 209);
+                margin: 0;
+                .left {
+                    padding-left: 30px;
+                    .no-desc{
+                        color: rgb(187, 187, 187);
+                    }
+                }
+            }
         }
     }
 }

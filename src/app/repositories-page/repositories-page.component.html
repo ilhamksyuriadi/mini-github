@@ -37,6 +37,19 @@
                             </div>
                         </div>
                     </mat-expansion-panel-header>
+                    <div class="repo-body">
+                        <div class="row">
+                            <div class="col-6 left">
+                                <p>Project Language: {{ repo.language }} </p>
+                                <p>Project Size: {{ repo.size }}</p>
+                                <p>Forking Url: {{ repo.forks_url }}</p>
+                                <p *ngIf="repo.description">Description: {{ repo.description }}</p>
+                                <p *ngIf="!repo.description">Description: <span class="no-desc">not available for this project</span></p>
+                            </div>
+                            <div class="col-6">
+                            </div>
+                        </div>
+                    </div>
                 </mat-expansion-panel>
                 <br>
             </mat-accordion>
