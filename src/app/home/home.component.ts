@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { api_url } from '../config/api-url';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { AddUser } from '../state/user/user.action';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +18,10 @@ export class HomeComponent implements OnInit {
   public value : String = '';
   public is_loading : boolean = false;
 
-  constructor ( private http: HttpClient, private router: Router ) { }
+  constructor ( private http: HttpClient, private router: Router, private store: Store ) { }
 
   ngOnInit () : void {
+    this.addUser('saprul')
   }
 
   submit () {
@@ -41,10 +44,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getUser (username) {
+  getUser(username) {
     let url = api_url.user;
     url = url.replace('[user]', username);
     return this.http.get(url);
+  }
+
+  addUser(name) {
+    this.store.dispatch(new AddUser({name: name}))
   }
 
 }
