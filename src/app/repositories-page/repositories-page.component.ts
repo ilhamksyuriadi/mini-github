@@ -2,18 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { api_url } from '../config/api-url';
 import { HttpClient } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { table_header } from '../config/repo-table';
 
 @Component({
   selector: 'app-repositories-page',
   templateUrl: './repositories-page.component.html',
   styleUrls: ['./repositories-page.component.scss']
 })
+
 export class RepositoriesPageComponent implements OnInit {
 
   public username: String = '';
   public is_loading: boolean = true;
   public repos: any;
   public current_repos: any;
+  public data_source: any;
+  public displayed_column: string[] = ['repo'];
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
@@ -21,8 +30,12 @@ export class RepositoriesPageComponent implements OnInit {
     this.username = this.activatedRoute.snapshot.params['username'];
     this.getRepos(this.username).subscribe( res => {
       if (res) {
-        console.log(res)
-        this.repos = res
+        console.log('raw',res)
+        this.repos =  this.transformRepoData(res);
+        console.log('rawrrr ',this.repos)
+        this.data_source = new MatTableDataSource<table_header>(this.repos)
+        // this.data_source.paginator = this.paginator;
+        setTimeout(() => this.data_source.paginator = this.paginator);
         setTimeout(() => this.setLoading(false),800)
       }
     })
@@ -73,6 +86,17 @@ export class RepositoriesPageComponent implements OnInit {
 
   getRepoData(event) {
     console.log(event)
+  }
+
+  transformRepoData(repo) {
+    let transformed_repo = [];
+    for (let i = 0; i < repo.length; i++) {
+      let new_data = {
+        repo: repo[i]
+      }
+      transformed_repo.push(new_data)
+    }
+    return transformed_repo
   }
 
 }

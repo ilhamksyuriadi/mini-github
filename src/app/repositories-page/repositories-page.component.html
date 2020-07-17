@@ -12,57 +12,61 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
-    <div *ngIf="repos" class="row">
-        <mat-paginator 
-            [length]="repos.length"
-            [pageSize]="5"
-            (page)="pageEvent = getRepoData($event)">
+    <div class="row">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]">
         </mat-paginator>
-        <div *ngFor="let repo of repos" class="repo-wrapper">
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div class="repo-header">
-                            <mat-panel-title>
-                                {{ repo.owner.login }} / {{ repo.name }}
-                            </mat-panel-title>
-                            <div class="repo-logo-wrapper">
-                                <div class="repo-logo">
-                                    <span class="material-icons">star_rate</span>
-                                    <p>{{ repo.stargazers_count }}</p>
+        <table *ngIf="repos" mat-table [dataSource]="data_source" class="repo-wrapper">
+            <ng-container matColumnDef="repo">
+                <th mat-header-cell *matHeaderCellDef>Repository List</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <div class="repo-header">
+                                    <mat-panel-title>
+                                        {{ element.repo.owner.login }} / {{ element.repo.name }}
+                                    </mat-panel-title>
+                                    <div class="repo-logo-wrapper">
+                                        <div class="repo-logo">
+                                            <span class="material-icons">star_rate</span>
+                                            <p>{{ element.repo.stargazers_count }}</p>
+                                        </div>
+                                        <div class="repo-logo">
+                                            <span class="material-icons">remove_red_eye</span>
+                                            <p>{{ element.repo.watchers_count }}</p>
+                                        </div>
+                                        <div class="repo-logo">
+                                            <span class="material-icons">call_split</span>
+                                            <p>{{ element.repo.forks_count }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="repo-logo">
-                                    <span class="material-icons">remove_red_eye</span>
-                                    <p>{{ repo.watchers_count }}</p>
-                                </div>
-                                <div class="repo-logo">
-                                    <span class="material-icons">call_split</span>
-                                    <p>{{ repo.forks_count }}</p>
+                            </mat-expansion-panel-header>
+                            <div class="repo-body">
+                                <div class="row">
+                                    <div class="col-7 left">
+                                        <p><span class="desc-title">Project Language:</span> {{ element.repo.language }} </p>
+                                        <p><span class="desc-title">Project Size:</span> {{ element.repo.size }}</p>
+                                        <p><span class="desc-title">Forking Url:</span> {{ element.repo.forks_url }}</p>
+                                        <p *ngIf="element.repo.description"><span class="desc-title">Description:</span> {{ element.repo.description }}</p>
+                                        <p *ngIf="!element.repo.description"><span class="desc-title">Description:</span> <span class="no-desc"> not available for this project</span></p>
+                                    </div>
+                                    <div class="col-5 right">
+                                        <button mat-raised-button [matMenuTriggerFor]="menu">Clone or Download</button>
+                                        <mat-menu #menu="matMenu">
+                                            <button mat-menu-item (click)="clone(element.repo.clone_url)">Clone</button>
+                                            <button mat-menu-item (click)="download(element.repo.archive_url)">Download</button>
+                                        </mat-menu>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </mat-expansion-panel-header>
-                    <div class="repo-body">
-                        <div class="row">
-                            <div class="col-7 left">
-                                <p><span class="desc-title">Project Language:</span> {{ repo.language }} </p>
-                                <p><span class="desc-title">Project Size:</span> {{ repo.size }}</p>
-                                <p><span class="desc-title">Forking Url:</span> {{ repo.forks_url }}</p>
-                                <p *ngIf="repo.description"><span class="desc-title">Description:</span> {{ repo.description }}</p>
-                                <p *ngIf="!repo.description"><span class="desc-title">Description:</span> <span class="no-desc"> not available for this project</span></p>
-                            </div>
-                            <div class="col-5 right">
-                                <button mat-raised-button [matMenuTriggerFor]="menu">Clone or Download</button>
-                                <mat-menu #menu="matMenu">
-                                    <button mat-menu-item (click)="clone(repo.clone_url)">Clone</button>
-                                    <button mat-menu-item (click)="download(repo.archive_url)">Download</button>
-                                </mat-menu>
-                            </div>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-                <br>
-            </mat-accordion>
-        </div>
+                        </mat-expansion-panel>
+                        <br>
+                    </mat-accordion>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayed_column"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayed_column;"></tr>
+        </table>
     </div>
 </div>

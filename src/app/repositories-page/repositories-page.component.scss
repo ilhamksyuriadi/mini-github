@@ -11,6 +11,9 @@
         }
         .repo-wrapper {
             width: 100%;
+            td,th {
+                border: none;
+            }
             .repo-header {
                 width: 100%;
                 display: flex;

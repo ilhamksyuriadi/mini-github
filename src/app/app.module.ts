@@ -17,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table'  
 
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
@@ -46,7 +47,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
