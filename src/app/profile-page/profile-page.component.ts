@@ -3,6 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { api_url } from '../config/api-url';
 import { HttpClient } from '@angular/common/http';
+import { Store, Select } from '@ngxs/store';
+import { User } from '../state/user/user.model'
+import { UserState } from '../state/user/user.state' // We will use this shortl
+import { RemoveUser } from '../state/user/user.action'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,7 +26,16 @@ export class ProfilePageComponent implements OnInit {
   public formatted_data : any;
   public is_loading : boolean = true;
 
-  constructor( private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient ) { }
+  public users$: Observable<User>
+
+  constructor( 
+    private router: Router, 
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient,
+    private store: Store 
+    ) { 
+      this.users$ = this.store.select(state => state.users.users)
+    }
 
   ngOnInit(): void {
     this.username = this.activatedRoute.snapshot.params['username'];
@@ -34,9 +48,13 @@ export class ProfilePageComponent implements OnInit {
         setTimeout(() => this.setLoading(false),800)
       }
     })
+    this.users$.subscribe(res=>{
+      console.log('asdasdasd', res)
+    })
   }
 
   back () {
+    this.removeUser('saprul')
     this.router.navigateByUrl('/')
   }
 
@@ -65,6 +83,10 @@ export class ProfilePageComponent implements OnInit {
 
   setLoading(state){
     this.is_loading = state;
+  }
+
+  removeUser(name){
+    this.store.dispatch(new RemoveUser(name))
   }
 
 }
