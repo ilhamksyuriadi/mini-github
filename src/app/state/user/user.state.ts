@@ -31,7 +31,7 @@ export class UserState {
     @Action(RemoveUser)
     remove({getState, patchState}: StateContext<UserStateModel>, { payload }:RemoveUser) {
         patchState({
-            users: getState().users.filter(u => u.name != payload)
+            users: getState().users.filter(u => u.username != payload)
         })
     }
 

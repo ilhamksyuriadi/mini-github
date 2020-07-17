@@ -15,23 +15,23 @@ import { AddUser } from '../state/user/user.action';
 @Injectable()
 
 export class HomeComponent implements OnInit {
-  public value : String = '';
+  public username : String = '';
   public is_loading : boolean = false;
 
   constructor ( private http: HttpClient, private router: Router, private store: Store ) { }
 
   ngOnInit () : void {
-    this.addUser('saprul')
   }
 
   submit () {
-    if (this.value) {
+    if (this.username) {
       this.is_loading = true;
-      this.getUser(this.value).subscribe( res => {
+      this.getUser(this.username).subscribe( res => {
         if (res) {
           console.log(res);
+          this.addUser(this.username, res)
           this.is_loading = false;
-          this.router.navigateByUrl('/profile-page/' + this.value)
+          this.router.navigateByUrl('/profile-page/' + this.username)
         }
       },
       err => {
@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit {
     return this.http.get(url);
   }
 
-  addUser(name) {
-    this.store.dispatch(new AddUser({name: name}))
+  addUser(username,data) {
+    this.store.dispatch(new AddUser({username: username, data: data}))
   }
 
 }

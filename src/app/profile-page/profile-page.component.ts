@@ -5,7 +5,7 @@ import { api_url } from '../config/api-url';
 import { HttpClient } from '@angular/common/http';
 import { Store, Select } from '@ngxs/store';
 import { User } from '../state/user/user.model'
-import { UserState } from '../state/user/user.state' // We will use this shortl
+import { UserState } from '../state/user/user.state' // will use this shortl
 import { RemoveUser } from '../state/user/user.action'
 import { Observable } from 'rxjs';
 
@@ -48,13 +48,20 @@ export class ProfilePageComponent implements OnInit {
         setTimeout(() => this.setLoading(false),800)
       }
     })
-    this.users$.subscribe(res=>{
-      console.log('asdasdasd', res)
-    })
+    // this.users$.subscribe(res=>{
+    //   if (res) {
+    //     this.img_url = res[0].data.avatar_url;
+    //     this.user_datas =  res[0].data;
+    //     this.user_data_keys = Object.keys(this.user_datas);
+    //     this.formatted_data = this.formatData(this.user_data_keys,this.user_datas);
+    //     setTimeout(() => this.setLoading(false),800)
+    //   }
+    //   console.log(res[0].data)
+    // })
   }
 
   back () {
-    this.removeUser('saprul')
+    this.removeUser(this.username)
     this.router.navigateByUrl('/')
   }
 
@@ -85,8 +92,8 @@ export class ProfilePageComponent implements OnInit {
     this.is_loading = state;
   }
 
-  removeUser(name){
-    this.store.dispatch(new RemoveUser(name))
+  removeUser(username){
+    this.store.dispatch(new RemoveUser(username))
   }
 
 }
