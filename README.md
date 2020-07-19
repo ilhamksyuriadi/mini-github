@@ -11,7 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * NGXS
 
 ### For download (at repository page's):
-To be able download the zip file at repository page, please use CORS extension at chrome ( https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf )
+To be able download the zip file at repository page, please use [CORS](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) extension at chrome
 
 ## Development server
 
